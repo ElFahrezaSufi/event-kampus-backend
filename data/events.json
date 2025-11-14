@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Workshop Mobile App Edisi Revisi",
+    "date": "2025-12-21",
+    "time": "23:32",
+    "location": "Online",
+    "category": "workshop",
+    "description": "Website Logic Atelier",
+    "id": "ce47e357-5de3-44da-8934-144ba1c68cef",
+    "createdAt": "2025-11-13T16:02:09.786Z",
+    "updatedAt": "2025-11-14T14:03:10.126Z"
+  },
+  {
+    "name": "Seminar AI Ilmu Komputer USU",
+    "date": "2025-12-01",
+    "time": "15:00",
+    "location": "Gedung D - 101",
+    "category": "seminar",
+    "description": "Acara Seminar Pelatihan Penggunaan AI untuk Mahasiswa Ilmu Komputer USU",
+    "id": "c76ec068-5b3e-413f-837b-27b92ed6adc0",
+    "createdAt": "2025-11-13T16:49:54.935Z",
+    "updatedAt": "2025-11-13T17:21:38.729Z"
+  }
+]
