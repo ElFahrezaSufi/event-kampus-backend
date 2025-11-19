@@ -1,3 +1,9 @@
+const jwt = require("jsonwebtoken");
+const pool = require("../config/db");
+
+const JWT_SECRET =
+  process.env.JWT_SECRET || "your-secret-key-change-in-production";
+
 module.exports = async (req, res, next) => {
   try {
     const auth = req.header("Authorization");
@@ -19,8 +25,16 @@ module.exports = async (req, res, next) => {
         .status(401)
         .json({ status: "error", message: "Token missing" });
 
-    const authService = require("../services/authService");
-    const user = await authService.findByToken(token);
+    // Verify JWT token
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+    // Get user from database to ensure user still exists
+    const result = await pool.query(
+      "SELECT id, nama, email, role FROM users WHERE id = $1",
+      [decoded.id]
+    );
+
+    const user = result.rows[0];
     if (!user)
       return res
         .status(401)
@@ -34,6 +48,11 @@ module.exports = async (req, res, next) => {
     };
     next();
   } catch (err) {
+    if (err.name === "JsonWebTokenError" || err.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ status: "error", message: "Invalid or expired token" });
+    }
     next(err);
   }
 };
