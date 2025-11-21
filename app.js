@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const logging = require("./middleware/logging");
-const errorHandler = require("./middleware/errorHandler");
+const logging = require("./src/middleware/logging");
+const errorHandler = require("./src/middleware/errorHandler");
 
-const eventsRouter = require("./routes/events");
-const authRouter = require("./routes/auth");
-const registrationsRouter = require("./routes/registrations");
+const eventsRouter = require("./src/routes/events");
+const authRouter = require("./src/routes/auth");
+const registrationsRouter = require("./src/routes/registrations");
 
 const app = express();
 
